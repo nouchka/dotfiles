@@ -2,5 +2,4 @@ before_install:
   - gem install fpm package_cloud
 
 script:
-  - make
-  - package_cloud push nouchka/home/ubuntu/xenial weave_*.deb
+  - make push
