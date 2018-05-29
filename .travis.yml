@@ -2,5 +2,6 @@ before_install:
   - gem install fpm package_cloud
 
 script:
+  - chmox +x build.sh
   - ./build.sh
-  - package_cloud push user/repo/os/version /path/to/package.ext
+  - package_cloud push nouchka/home/ubuntu/xenial weave_*.deb
