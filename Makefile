@@ -16,4 +16,4 @@ build:
 	rm -f weave_$(VERSION)-$(TRAVIS_BUILD_NUMBER)_amd64.deb
 	fpm -t deb -s dir -n $(NAME) -v $(VERSION)-$(TRAVIS_BUILD_NUMBER) --description "$(DESCRIPTION)" -C dist \
 	--vendor "$(VENDOR)" -m "$(MAINTAINER)" --license "$(LICENSE)" --url $(URL) \
-	--deb-no-default-config-files --config-files etc .
+	--deb-no-default-config-files .
