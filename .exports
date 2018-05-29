@@ -1,0 +1,10 @@
+#!/bin/bash
+
+# Larger bash history (allow 32³ entries; default is 500)
+export HISTSIZE=1500;
+export HISTFILESIZE=$HISTSIZE;
+export HISTCONTROL=ignoredups;
+
+## for metrics and latest
+export $(cat ~/.env | grep "GITHUB_TOKEN_READ_PUBLIC" | xargs)
+export HUB_USER=nouchka
