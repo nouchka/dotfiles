@@ -1,0 +1,6 @@
+before_install:
+  - gem install fpm package_cloud
+
+script:
+  - ./build.sh
+  - package_cloud push user/repo/os/version /path/to/package.ext
