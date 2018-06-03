@@ -1,0 +1,11 @@
+version: '2'
+
+services:
+  ruby:
+    image: ruby
+    working_dir: /usr/src/app/
+    entrypoint: bash -c "gem install --no-ri --no-rdoc fpm && make build"
+    env_file:
+      - ~/.env
+    volumes:
+      - ./:/usr/src/app

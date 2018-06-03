@@ -1,0 +1,8 @@
+# easy rsa for openvpn generation
+- src: kbrebanov.easy_rsa
+# docker setup basic package
+- src: geerlingguy.docker
+# swarm init with token
+- src: grycap.swarm
+# locale management
+- src: nickjj.locale
