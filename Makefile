@@ -18,6 +18,7 @@ build: deb
 	fpm -t deb -s dir -n $(NAME) -v $(VERSION).$(TRAVIS_BUILD_NUMBER) --description "$(DESCRIPTION)" -C build \
 	--vendor "$(VENDOR)" -m "$(MAINTAINER)" --license "$(LICENSE)" --url $(URL) --deb-no-default-config-files \
 	--replaces katagena-laptop \
+	--replaces katagena-git \
 	-d docker-ce -d firefox -d redshift -d gtk-redshift \
 	-d openvpn -d network-manager-openvpn -d mosh -d openssh-server -d openssh-client \
 	-d printer-driver-escpr -d gnome-session-flashback -d chromium-browser -d vlc -d unrar -d unzip -d samba -d ntp -d myspell-fr-fr \

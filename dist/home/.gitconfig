@@ -1,0 +1,14 @@
+[alias]
+	co = checkout
+	st = status
+	br = branch
+	ci = commit
+[push]
+	default = simple
+[core]
+	excludesfile = ~/.gitignore
+[commit]
+	gpgsign = true
+
+[include]
+	path = ~/.gitconfig.local
