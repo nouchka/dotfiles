@@ -6,5 +6,6 @@ export HISTFILESIZE=$HISTSIZE;
 export HISTCONTROL=ignoredups;
 
 ## for metrics and latest
+touch ~/.env
 export $(cat ~/.env | grep "GITHUB_TOKEN_READ_PUBLIC" | xargs)
 export HUB_USER=nouchka
