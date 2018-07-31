@@ -9,7 +9,7 @@ find . -type f -printf '%P\n'| grep -v '.ssh/config'| while read path
 do
 	TARGET_FILE=$HOME/$path
 	if [ ! -L "$TARGET_FILE" ]; then
-		echo $TARGET_FILE exists
+		echo Setup $TARGET_FILE
 		diff $DOTFILES_DIR/$path $TARGET_FILE
 		sleep 5
 		ln -sfn $DOTFILES_DIR/$path $TARGET_FILE
