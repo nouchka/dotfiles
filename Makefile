@@ -11,7 +11,9 @@ LICENSE=Apache License 2.0
 deb:
 	mkdir -p build/
 	mkdir -p build/usr/share/
+	mkdir -p build/usr/sbin/
 	cp -Rf dist/home/ build/usr/share/dotfiles/
+	cp -Rf dist/bin/ build/usr/sbin/
 
 build: deb
 	rm -f $(NAME)_$(VERSION).$(TRAVIS_BUILD_NUMBER)_amd64.deb
@@ -35,5 +37,7 @@ down:
 	docker-compose down
 	rm -rf dotfiles*.deb
 
+.PHONY: install
 install:
-	echo WIP
+	@chmod +x dist/bin/nouchka-dotfiles
+	@dist/bin/nouchka-dotfiles

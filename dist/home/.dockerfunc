@@ -1,0 +1,126 @@
+#!/bin/bash
+# Bash wrappers for docker run commands
+
+export DOCKER_REPO_PREFIX=nouchka
+
+#
+# Helper Functions
+#
+
+docker_cleanup(){
+	##TODO
+}
+
+#
+# Container Aliases
+#
+
+git_check(){
+	docker run --rm \
+		--workdir /files \
+		-v "$(pwd):/files:ro" \
+		-v "${HOME}/.gitignore:/root/.gitignore:ro" \
+		-v "${HOME}/.gitconfig:/root/.gitconfig:ro" \
+		${DOCKER_REPO_PREFIX}/gitcheck gitcheck --quiet -u
+}
+
+travis(){
+	docker run --rm \
+		-v "$(pwd):/workspace:ro" \
+		-v "${HOME}/.travis:/travis" \
+		${DOCKER_REPO_PREFIX}/travis-cli "$@"
+}
+
+phpmd(){
+	docker run --rm -it \
+		-v "$(pwd):/workspace:ro" \
+		denisura/phpmd "$@"
+}
+
+phpcpd(){
+	docker run --rm -it \
+		-v "$(pwd):/app:ro" \
+		gruen/phpcpd ./
+}
+
+hadolint(){
+	docker run --rm -i hadolint/hadolint < Dockerfile
+}
+
+node(){
+	docker run --rm -it \
+		-v "$(pwd):/usr/src/project" \
+		-w /usr/src/project \
+		digitallyseamless/nodejs-bower-grunt $@
+}
+
+hattrick(){
+	docker run --rm -d \
+		-v /etc/localtime:/etc/localtime:ro \
+		-v /tmp/.X11-unix:/tmp/.X11-unix \
+		-e "DISPLAY=unix${DISPLAY}" \
+		-v "${HOME}/Documents/Hattrick/:/home/user/hrf/" \
+		-v "${HOME}/Documents/Hattrick/:/home/user/.hattrickorganizer/" \
+		--name hattrick \
+		${DOCKER_REPO_PREFIX}/hattrick-organiser
+}
+
+eclipse(){
+	mkdir -p "${HOME}/.eclipse-installer"
+	mkdir -p "${HOME}/.eclipse"
+	export $(cat ~/.env | grep "WAKATIME_KEY" | xargs)
+	xhost +
+	docker run -d \
+		-v /etc/localtime:/etc/localtime:ro \
+		-v /tmp/.X11-unix:/tmp/.X11-unix \
+		-e "DISPLAY=unix${DISPLAY}" \
+		-e WAKATIME_KEY=${WAKATIME_KEY} \
+		-v /etc/ssh/ssh_known_hosts:/etc/ssh/ssh_known_hosts:ro \
+		-v "${HOME}/.ssh/:/home/developer/.ssh/:ro" \
+		-v "${HOME}/.gitconfig:/home/developer/.gitconfig:ro" \
+		-v "${HOME}/.gitconfig.local:/home/developer/.gitconfig.local:ro" \
+		-v "${HOME}/.gitignore:/home/developer/.gitignore:ro" \
+		-v "${HOME}/workspace/:/home/developer/workspace/" \
+		-v "${HOME}/.eclipse-installer/:/opt/eclipse-installer/" \
+		-v "${HOME}/.eclipse/:/home/developer/eclipse/" \
+		--name eclipse \
+		nouchka/oomph:php7
+}
+
+eclipse_close(){
+	docker exec eclipse wmctrl -c eclipse
+}
+
+freecad(){
+	xhost +
+	docker run --rm -d \
+		-v /etc/localtime:/etc/localtime:ro \
+		-v /tmp/.X11-unix:/tmp/.X11-unix \
+		-v $XAUTHORITY:/home/ubuntu/.Xauthority \
+		-e "DISPLAY=unix${DISPLAY}" \
+		-v "${HOME}/freecad:/home/freecad/workspace" \
+		--name freecad \
+		pyro225/freecad-docker
+}
+
+keepass(){
+	xhost +
+	docker run --rm -d \
+		-v /tmp/.X11-unix:/tmp/.X11-unix \
+		-v /etc/machine-id:/etc/machine-id:ro \
+		-v /usr/share/X11/xkb:/usr/share/X11/xkb/:ro \
+		-v ${HOME}/.config/keepassxc:/home/developer/.config/keepassxc \
+		-v ${HOME}/Documents/keys/:/home/developer/keys \
+		-e DISPLAY=unix$DISPLAY \
+		--network=host \
+		-p 19455:19455 \
+		--name keepass \
+		${DOCKER_REPO_PREFIX}/keepassxc
+}
+
+ansible_setup(){
+	docker run --rm -it \
+		-v $HOME/.ansible/:/etc/ansible/ \
+		${DOCKER_REPO_PREFIX}/ansible \
+		ansible-galaxy install -p /etc/ansible/roles/ -r /etc/ansible/requirements.yml
+}
