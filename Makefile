@@ -13,7 +13,7 @@ deb:
 	mkdir -p build/usr/share/
 	mkdir -p build/usr/sbin/
 	cp -Rf dist/home/ build/usr/share/dotfiles/
-	cp -Rf dist/bin/ build/usr/sbin/
+	cp -Rf dist/bin/nouchka-dotfiles build/usr/sbin/
 
 build: deb
 	rm -f $(NAME)_$(VERSION).$(TRAVIS_BUILD_NUMBER)_amd64.deb
