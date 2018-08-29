@@ -125,3 +125,8 @@ ansible_setup(){
 		${DOCKER_REPO_PREFIX}/ansible \
 		ansible-galaxy install -p /etc/ansible/roles/ -r /etc/ansible/requirements.yml
 }
+
+tor_proxy(){
+	docker run -d --restart always -v /etc/localtime:/etc/localtime:ro -p 9050:9050 --name torproxy jess/tor-proxy
+	docker run -d --restart always -v /etc/localtime:/etc/localtime:ro -p 8118:8118 --name privoxy --link torproxy:torproxy jess/privoxy
+}
