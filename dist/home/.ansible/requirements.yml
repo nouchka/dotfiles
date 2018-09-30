@@ -6,3 +6,5 @@
 - src: grycap.swarm
 # locale management
 - src: nickjj.locale
+# docker swarm
+- src: atosatto.docker-swarm
