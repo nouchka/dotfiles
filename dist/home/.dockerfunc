@@ -38,6 +38,12 @@ phpmd(){
 		denisura/phpmd "$@"
 }
 
+sfcheck(){
+	docker run --rm \
+		-v "$(pwd)/composer.lock:/composer.lock:ro" \
+		jsixc/sensiolabs-security-checker:7.1
+}
+
 phpcpd(){
 	docker run --rm -it \
 		-v "$(pwd):/app:ro" \
