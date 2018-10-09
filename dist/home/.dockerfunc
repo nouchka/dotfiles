@@ -50,6 +50,15 @@ phpcpd(){
 		gruen/phpcpd ./
 }
 
+ansiblelint(){
+	docker run --rm \
+		-v "$(pwd):/home/developer/config:ro" \
+		nouchka/ansible \
+		bash -c 'find . -name "*.yml" | xargs -r ansible-lint' \
+		|tee /tmp/ansible-lint.log
+	cat /tmp/ansible-lint.log|grep "^ANSIBLE"|sort|uniq -c
+}
+
 hadolint(){
 	docker run --rm -i hadolint/hadolint < Dockerfile
 }
