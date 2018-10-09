@@ -57,6 +57,7 @@ ansiblelint(){
 		bash -c 'find . -name "*.yml" | xargs -r ansible-lint' \
 		|tee /tmp/ansible-lint.log
 	cat /tmp/ansible-lint.log|grep "^ANSIBLE"|sort|uniq -c
+	cat /tmp/ansible-lint.log|grep "^/home"|awk -F ':' '{print $1}'|uniq -c|sort --reverse --numeric-sort
 }
 
 hadolint(){
