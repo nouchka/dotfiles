@@ -1,7 +1,8 @@
 # easy rsa for openvpn generation
 - src: kbrebanov.easy_rsa
 # docker setup basic package
-- src: geerlingguy.docker
+- src: https://github.com/nouchka/ansible-role-docker/archive/master.tar.gz
+  name: geerlingguy.docker
 # kubernetes
 - src: geerlingguy.kubernetes
 # swarm init with token
