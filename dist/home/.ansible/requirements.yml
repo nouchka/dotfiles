@@ -15,4 +15,26 @@
 ##  version: v1.3.2-beta
 - src: https://github.com/nouchka/ansible-dockerswarm/archive/master.tar.gz
   name: atosatto.docker-swarm
+- src: https://github.com/flandiGT/openwrt-uci/archive/master.tar.gz
+  name: openwrt-uci
+- src: https://github.com/flandiGT/openwrt-system/archive/master.tar.gz
+  name: openwrt-system
+- src: https://github.com/flandiGT/openwrt-wireless/archive/master.tar.gz
+  name: openwrt-wireless
+- src: https://github.com/flandiGT/openwrt-network/archive/master.tar.gz
+  name: openwrt-network
+- src: https://github.com/flandiGT/openwrt-firewall/archive/master.tar.gz
+  name: openwrt-firewall
+- src: https://github.com/flandiGT/openwrt-dhcp/archive/master.tar.gz
+  name: openwrt-dhcp
+- src: https://github.com/flandiGT/openwrt-ddns/archive/master.tar.gz
+  name: openwrt-ddns
+- src: https://github.com/flandiGT/openwrt-sqm/archive/master.tar.gz
+  name: openwrt-sqm
+- src: https://github.com/flandiGT/openwrt-openvpn/archive/master.tar.gz
+  name: openwrt-openvpn
+- src: https://github.com/flandiGT/openwrt-ssh/archive/master.tar.gz
+  name: openwrt-ssh
+- src: https://github.com/flandiGT/openwrt-tor/archive/master.tar.gz
+  name: openwrt-tor
 
