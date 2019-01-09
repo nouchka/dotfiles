@@ -8,17 +8,21 @@ cd $DOTFILES_DIR
 find . -type f -printf '%P\n'| grep -v '.ssh/config'| while read path
 do
 	TARGET_FILE=$HOME/$path
-	DIFF=$(diff -q $DOTFILES_DIR/$path $TARGET_FILE) 
-	if [ "$DIFF" != "" ]; then
-		echo "Setup $DOTFILES_DIR/$path $TARGET_FILE"
-		diff $DOTFILES_DIR/$path $TARGET_FILE
-		sleep 5
+	if [ -f "$TARGET_FILE" ]; then
+		DIFF=$(diff -q $DOTFILES_DIR/$path $TARGET_FILE) 
+		if [ "$DIFF" != "" ]; then
+			echo "Setup $DOTFILES_DIR/$path $TARGET_FILE"
+			diff $DOTFILES_DIR/$path $TARGET_FILE
+			sleep 5
+			cp $DOTFILES_DIR/$path $TARGET_FILE
+		fi
+	else
 		cp $DOTFILES_DIR/$path $TARGET_FILE
 	fi
-	
 done
 
 touch $HOME/.ssh/config.local
+touch $HOME/.ssh/config
 cat $DOTFILES_DIR/.ssh/config $HOME/.ssh/config.local > $HOME/.ssh/config.tmp
 DIFF=$(diff -q $HOME/.ssh/config.tmp $HOME/.ssh/config) 
 if [ "$DIFF" != "" ]; then
@@ -28,3 +32,4 @@ if [ "$DIFF" != "" ]; then
 	cp $HOME/.ssh/config.tmp $HOME/.ssh/config
 fi
 rm $HOME/.ssh/config.tmp
+
