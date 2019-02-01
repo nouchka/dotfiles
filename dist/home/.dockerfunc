@@ -84,25 +84,32 @@ hattrick(){
 }
 
 eclipse(){
-	mkdir -p "${HOME}/.eclipse-installer"
-	mkdir -p "${HOME}/.eclipse"
+	mkdir -p "${HOME}/.eclipse/workspaces"
+	mkdir -p "${HOME}/.eclipse/installer"
+	mkdir -p "${HOME}/.eclipse/plugins"
+	mkdir -p "${HOME}/.eclipse/eclipses"
 	export $(cat ~/.env | grep "WAKATIME_KEY" | xargs)
 	xhost +
-	docker run -d \
+	docker run --rm -d \
 		-v /etc/localtime:/etc/localtime:ro \
 		-v /tmp/.X11-unix:/tmp/.X11-unix \
 		-e "DISPLAY=unix${DISPLAY}" \
+		-e ECLIPSE_VERSION=katagena-php72 \
+		-e PROJECT=katagena \
+		-e "SETUP_URL=https://raw.githubusercontent.com/nouchka/docker-oomph/master/setup/" \
 		-e WAKATIME_KEY=${WAKATIME_KEY} \
 		-v /etc/ssh/ssh_known_hosts:/etc/ssh/ssh_known_hosts:ro \
 		-v "${HOME}/.ssh/:/home/developer/.ssh/:ro" \
 		-v "${HOME}/.gitconfig:/home/developer/.gitconfig:ro" \
 		-v "${HOME}/.gitconfig.local:/home/developer/.gitconfig.local:ro" \
 		-v "${HOME}/.gitignore:/home/developer/.gitignore:ro" \
-		-v "${HOME}/workspace/:/home/developer/workspace/" \
-		-v "${HOME}/.eclipse-installer/:/opt/eclipse-installer/" \
-		-v "${HOME}/.eclipse/:/home/developer/eclipse/" \
+		-v "${HOME}/workspace/:/home/developer/project/" \
+		-v "${HOME}/.eclipse/workspaces/:/home/developer/workspace/" \
+		-v "${HOME}/.eclipse/installer/:/opt/eclipse-installer/" \
+		-v "${HOME}/.eclipse/plugins/:/home/developer/.p2/" \
+		-v "${HOME}/.eclipse/eclipses/:/home/developer/eclipse/" \
 		--name eclipse \
-		nouchka/oomph:php7
+		nouchka/oomph:php72
 }
 
 eclipse_close(){
