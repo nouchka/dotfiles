@@ -12,6 +12,16 @@ docker_cleanup(){
 	docker image prune -f
 }
 
+del_stopped(){
+	local name=$1
+	local state
+	state=$(docker inspect --format "{{.State.Running}}" "$name" 2>/dev/null)
+
+	if [[ "$state" == "false" ]]; then
+		docker rm "$name"
+	fi
+}
+
 #
 # Container Aliases
 #
@@ -90,6 +100,7 @@ eclipse(){
 	mkdir -p "${HOME}/.eclipse/eclipses"
 	export $(cat ~/.env | grep "WAKATIME_KEY" | xargs)
 	xhost +
+	del_stopped eclipse
 	docker run --rm -d \
 		-v /etc/localtime:/etc/localtime:ro \
 		-v /tmp/.X11-unix:/tmp/.X11-unix \
