@@ -2,3 +2,4 @@
 /.settings/
 .env
 /.externalToolBuilders/
+/.buildpath
