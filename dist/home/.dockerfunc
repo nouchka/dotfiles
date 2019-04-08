@@ -48,6 +48,12 @@ phpmd(){
 		denisura/phpmd "$@"
 }
 
+phpcs(){
+	docker run --rm -it \
+		-v "$(pwd):/project:ro" \
+		herloct/phpcs "$@"
+}
+
 sfcheck(){
 	docker run --rm \
 		-v "$(pwd)/composer.lock:/composer.lock:ro" \
