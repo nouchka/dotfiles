@@ -1,3 +1,8 @@
 #!/bin/bash
 
-docker run --rm --env-file $HOME/.env -v $(pwd):/aws mikesir87/aws-cli aws "$@"
+mkdir -p $HOME/.config/aws
+
+docker run --rm --env-file $HOME/.env \
+	-v $(pwd):/aws \
+	-v $HOME/.config/aws:/root/.aws \
+	mikesir87/aws-cli aws "$@"
