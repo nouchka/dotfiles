@@ -5,6 +5,8 @@
   name: geerlingguy.docker
 # kubernetes
 - src: geerlingguy.kubernetes
+# NTP
+- src: geerlingguy.ntp
 # datadog
 - src: Datadog.datadog
 # swarm init with token
