@@ -70,6 +70,14 @@ phpmyadmin(){
 		${DOCKER_REPO_PREFIX}/phpmyadmin
 }
 
+adminer(){
+	del_stopped adminer
+	docker run --rm -d \
+		-p 8102:8080 \
+		--name adminer \
+		adminer
+}
+
 ansiblelint(){
 	docker run --rm \
 		-v "$(pwd):/home/developer/config:ro" \
