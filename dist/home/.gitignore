@@ -3,3 +3,4 @@
 .env
 /.externalToolBuilders/
 /.buildpath
+node_modules/
