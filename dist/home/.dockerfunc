@@ -93,13 +93,6 @@ hadolint(){
 	docker run --rm -i hadolint/hadolint < Dockerfile
 }
 
-node(){
-	docker run --rm -it \
-		-v "$(pwd):/usr/src/project" \
-		-w /usr/src/project \
-		digitallyseamless/nodejs-bower-grunt $@
-}
-
 hattrick(){
 	docker run --rm -d \
 		-v /etc/localtime:/etc/localtime:ro \
