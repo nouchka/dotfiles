@@ -1,3 +1,6 @@
+# gpg keys generation
+- src: https://github.com/juju4/ansible-gpgkey_generate/archive/master.tar.gz
+  name: juju4.gpgkey_generate
 # easy rsa for openvpn generation
 - src: kbrebanov.easy_rsa
 # docker setup basic package
