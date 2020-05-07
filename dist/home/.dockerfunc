@@ -59,15 +59,12 @@ phpcpd(){
 		-v "$(pwd):/app:ro" \
 		gruen/phpcpd ./
 }
-
-phpmyadmin(){
-	del_stopped phpmyadmin
-	export $(cat ~/.env | grep "MYSQL_SERVER" | xargs)
-	docker run --rm -d \
-		-p 8102:80 \
-		-e "PMA_HOST=${MYSQL_SERVER}" \
-		--name phpmyadmin \
-		${DOCKER_REPO_PREFIX}/phpmyadmin
+monit(){
+	del_stopped monit
+	docker run --restart always -d \
+		-p 2812:2812 \
+		--name monit \
+		registry.gitlab.com/katagena/monit-monitoring
 }
 
 adminer(){
