@@ -106,6 +106,7 @@ eclipse(){
 	mkdir -p "${HOME}/.eclipse/installer"
 	mkdir -p "${HOME}/.eclipse/plugins"
 	mkdir -p "${HOME}/.eclipse/eclipses"
+	mkdir -p "/opt/projects/"
 	export $(cat ~/.env | grep "WAKATIME_KEY" | xargs)
 	xhost +
 	del_stopped eclipse
@@ -123,6 +124,7 @@ eclipse(){
 		-v "${HOME}/.gitconfig.local:/home/developer/.gitconfig.local:ro" \
 		-v "${HOME}/.gitignore:/home/developer/.gitignore:ro" \
 		-v "${HOME}/workspace/:/home/developer/project/" \
+		-v "/opt/projects/:/home/developer/opt/" \
 		-v "${HOME}/.eclipse/workspaces/:/home/developer/workspace/" \
 		-v "${HOME}/.eclipse/installer/:/opt/eclipse-installer/" \
 		-v "${HOME}/.eclipse/plugins/:/home/developer/.p2/" \
