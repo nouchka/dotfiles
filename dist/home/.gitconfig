@@ -4,7 +4,7 @@
 	br = branch
 	ci = commit
 [push]
-	default = simple
+	default = current
 [core]
 	excludesfile = ~/.gitignore
 [commit]
