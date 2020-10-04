@@ -1,0 +1,8 @@
+ansible_debug_off(){
+	sed -i "s/##display_skipped_hosts/display_skipped_hosts/" ~/.ansible/ansible.cfg
+	sed -i "s/##display_ok_hosts/display_ok_hosts/" ~/.ansible/ansible.cfg
+}
+ansible_debug_on(){
+	sed -i "s/display_skipped_hosts/##display_skipped_hosts/" ~/.ansible/ansible.cfg
+	sed -i "s/display_ok_hosts/##display_ok_hosts/" ~/.ansible/ansible.cfg
+}
