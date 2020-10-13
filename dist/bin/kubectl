@@ -3,5 +3,5 @@
 mkdir -p $HOME/.config/kube
 
 docker run --rm -ti \
-	-v $HOME/.config/kube:/root/.kube \
+	-v $HOME/.config/kube:/opsbox/ \
 	itsvit/opsbox kubectl "$@"
