@@ -22,3 +22,5 @@
   name: atosatto.docker-swarm
 # Datadog
 - src: datadog.datadog
+# k3s
+- src: ebesson.k3s
