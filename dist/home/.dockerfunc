@@ -114,7 +114,7 @@ eclipse(){
 		-v /etc/localtime:/etc/localtime:ro \
 		-v /tmp/.X11-unix:/tmp/.X11-unix \
 		-e "DISPLAY=unix${DISPLAY}" \
-		-e ECLIPSE_VERSION=katagena-php74 \
+		-e ECLIPSE_VERSION=katagena-php72 \
 		-e PROJECT=katagena \
 		-e "SETUP_URL=https://raw.githubusercontent.com/nouchka/docker-oomph/master/setup/" \
 		-e WAKATIME_KEY=${WAKATIME_KEY} \
