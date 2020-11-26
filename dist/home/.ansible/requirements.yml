@@ -8,6 +8,8 @@
   name: geerlingguy.docker
 # kubernetes
 - src: geerlingguy.kubernetes
+# pip
+- src: geerlingguy.pip
 # NTP
 - src: geerlingguy.ntp
 # datadog
