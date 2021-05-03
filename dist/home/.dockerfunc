@@ -144,7 +144,7 @@ freecad(){
 		-v /tmp/.X11-unix:/tmp/.X11-unix \
 		-v $XAUTHORITY:/home/ubuntu/.Xauthority \
 		-e "DISPLAY=unix${DISPLAY}" \
-		-v "${HOME}/freecad:/home/freecad/workspace" \
+		-v "${HOME}/Documents/Freecad:/home/freecad/workspace" \
 		--name freecad \
 		pyro225/freecad-docker
 }
