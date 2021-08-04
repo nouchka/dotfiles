@@ -22,7 +22,7 @@ build: deb
 	--replaces katagena-laptop \
 	--replaces katagena-git \
 	-d nouchka-postman -d nouchka-ansible -d nouchka-yt -d nouchka-metrics -d nouchka-latest -d nouchka-hugo -d nouchka-orbit -d nouchka-heroku \
-	-d nouchka-travis -d nouchka-lintian -d nouchka-openjardin -d nouchka-keepassxc -d nouchka-gpsprune \
+	-d nouchka-lintian -d nouchka-openjardin -d nouchka-keepassxc -d nouchka-gpsprune \
 	-d nouchka-mysql -d nouchka-vault -d nouchka-terraform -d nouchka-signal \
 	-d docker-ce -d firefox -d redshift -d gtk-redshift -d git-flow \
 	-d openvpn -d network-manager-openvpn -d mosh -d openssh-server -d openssh-client \
