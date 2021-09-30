@@ -91,12 +91,13 @@ hadolint(){
 }
 
 hattrick(){
+	mkdir -p "${HOME}/.config/ho"
 	docker run --rm -d \
 		-v /etc/localtime:/etc/localtime:ro \
 		-v /tmp/.X11-unix:/tmp/.X11-unix \
 		-e "DISPLAY=unix${DISPLAY}" \
 		-v "${HOME}/Documents/Hattrick/:/home/user/hrf/" \
-		-v "${HOME}/Documents/Hattrick/:/home/user/.hattrickorganizer/" \
+		-v "${HOME}/.config/ho/:/home/user/.ho/" \
 		--name hattrick \
 		${DOCKER_REPO_PREFIX}/hattrick-organiser
 }
