@@ -20,16 +20,3 @@ do
 		cp $DOTFILES_DIR/$path $TARGET_FILE
 	fi
 done
-
-touch $HOME/.ssh/config.local
-touch $HOME/.ssh/config
-cat $DOTFILES_DIR/.ssh/config $HOME/.ssh/config.local > $HOME/.ssh/config.tmp
-DIFF=$(diff -q $HOME/.ssh/config.tmp $HOME/.ssh/config) 
-if [ "$DIFF" != "" ]; then
-	echo "Setup $HOME/.ssh/config"
-	diff $HOME/.ssh/config $HOME/.ssh/config.tmp
-	sleep 5
-	cp $HOME/.ssh/config.tmp $HOME/.ssh/config
-fi
-rm $HOME/.ssh/config.tmp
-
