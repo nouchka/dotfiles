@@ -112,6 +112,7 @@ eclipse(){
 	xhost +
 	del_stopped eclipse
 	docker run --rm -d \
+		-p 9000:9000 \
 		-v /etc/localtime:/etc/localtime:ro \
 		-v /tmp/.X11-unix:/tmp/.X11-unix \
 		-e "DISPLAY=unix${DISPLAY}" \
