@@ -22,8 +22,6 @@
 ##  version: v1.3.2-beta
 - src: https://github.com/nouchka/ansible-dockerswarm/archive/master.tar.gz
   name: atosatto.docker-swarm
-# Datadog
-- src: datadog.datadog
 # k3s
 - src: https://github.com/nouchka/ansible-role-k3s/archive/master.tar.gz
   name: ebesson.k3s
