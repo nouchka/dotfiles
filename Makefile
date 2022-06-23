@@ -15,7 +15,7 @@ deb:
 	cp -Rf dist/home/ build/usr/share/dotfiles/
 	cp -Rf dist/bin/* build/usr/sbin/
 
-build: deb
+build-deb: deb
 	rm -f $(NAME)_$(VERSION).$(TRAVIS_BUILD_NUMBER)_amd64.deb
 	fpm -t deb -s dir -n $(NAME) -v $(VERSION).$(TRAVIS_BUILD_NUMBER) --description "$(DESCRIPTION)" -C build \
 	--vendor "$(VENDOR)" -m "$(MAINTAINER)" --license "$(LICENSE)" --url $(URL) --deb-no-default-config-files \
@@ -30,7 +30,7 @@ build: deb
 	.
 	rm -rf build/
 
-push: build
+push: build-deb
 	package_cloud push nouchka/home/ubuntu/xenial $(NAME)_*.deb
 
 test:
