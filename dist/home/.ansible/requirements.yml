@@ -4,8 +4,7 @@
 # easy rsa for openvpn generation
 - src: kbrebanov.easy_rsa
 # docker setup basic package
-- src: https://github.com/nouchka/ansible-role-docker/archive/master.tar.gz
-  name: geerlingguy.docker
+- src: geerlingguy.docker
 # kubernetes
 - src: geerlingguy.kubernetes
 # pip
