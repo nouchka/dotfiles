@@ -21,7 +21,7 @@ build-deb: deb
 	--vendor "$(VENDOR)" -m "$(MAINTAINER)" --license "$(LICENSE)" --url $(URL) --deb-no-default-config-files \
 	--replaces katagena-laptop \
 	--replaces katagena-git \
-	-d nouchka-postman -d nouchka-ansible -d nouchka-metrics -d nouchka-latest -d nouchka-hugo \
+	-d nouchka-postman -d nouchka-ansible -d nouchka-metrics -d nouchka-latest \
 	-d nouchka-lintian -d nouchka-openjardin -d nouchka-keepassxc -d nouchka-gpsprune \
 	-d nouchka-vault -d nouchka-terraform -d nouchka-signal \
 	-d docker-ce -d firefox -d redshift -d gtk-redshift -d git-flow \

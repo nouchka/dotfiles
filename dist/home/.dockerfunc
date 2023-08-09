@@ -48,6 +48,14 @@ phpmd(){
 		denisura/phpmd "$@"
 }
 
+hugo(){
+	docker run --rm -it \
+		--user="node" \
+		-p 1313:1313 \
+		-v "$(pwd):/src" \
+		hugomods/hugo "$@"
+}
+
 sfcheck(){
 	docker run --rm \
 		-v "$(pwd)/composer.lock:/composer.lock:ro" \
@@ -168,4 +176,9 @@ ansible_doctor(){
 tor_proxy(){
 	docker run -d --restart always -v /etc/localtime:/etc/localtime:ro -p 9050:9050 --name torproxy jess/tor-proxy
 	docker run -d --restart always -v /etc/localtime:/etc/localtime:ro -p 8118:8118 --name privoxy --link torproxy:torproxy jess/privoxy
+}
+
+# gitleaks detect https://github.com/gitleaks/gitleaks
+gitleaks(){
+	docker run --rm -v "$(pwd):/path:ro" ghcr.io/gitleaks/gitleaks:latest --source="/path" "$@"
 }
