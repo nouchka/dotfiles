@@ -48,14 +48,6 @@ phpmd(){
 		denisura/phpmd "$@"
 }
 
-hugo(){
-	docker run --rm -it \
-		--user="node" \
-		-p 1313:1313 \
-		-v "$(pwd):/src" \
-		hugomods/hugo /usr/bin/hugo "$@"
-}
-
 sfcheck(){
 	docker run --rm \
 		-v "$(pwd)/composer.lock:/composer.lock:ro" \
