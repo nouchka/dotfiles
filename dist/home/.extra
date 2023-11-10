@@ -6,3 +6,6 @@ ansible_debug_on(){
 	sed -i "s/display_skipped_hosts/##display_skipped_hosts/" ~/.ansible/ansible.cfg
 	sed -i "s/display_ok_hosts/##display_ok_hosts/" ~/.ansible/ansible.cfg
 }
+clean_dos2unix(){
+	find . -not -type d -exec file "{}" ";"| grep CRLF|awk -F':' '{print $1}'|xargs -r dos2unix
+}
