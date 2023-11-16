@@ -1,0 +1,5 @@
+docker run --rm \
+	--user $(id -u):$(id -g) \
+	-w /imgs \
+	-v ./:/imgs dpokidov/imagemagick \
+	"$@"
