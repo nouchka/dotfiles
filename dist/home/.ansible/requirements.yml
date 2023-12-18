@@ -24,3 +24,5 @@
 # k3s
 - src: https://github.com/nouchka/ansible-role-k3s/archive/master.tar.gz
   name: ebesson.k3s
+# gitlaci runner
+- src: riemers.gitlab-runner
