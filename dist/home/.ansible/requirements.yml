@@ -26,3 +26,5 @@
   name: ebesson.k3s
 # gitlaci runner
 - src: riemers.ansible-gitlab-runner
+# VS Code
+- src: gantsign.visual-studio-code
