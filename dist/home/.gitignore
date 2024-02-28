@@ -6,5 +6,5 @@
 node_modules/
 /.serverless/
 /.dynamodb/
-n98-magerun2.phar
+**/n98-magerun2.phar
 /vendor/
