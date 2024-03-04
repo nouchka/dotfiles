@@ -124,6 +124,7 @@ eclipse(){
 		-v "${HOME}/.ssh/:/home/developer/.ssh/:ro" \
 		-v "${HOME}/.gitconfig:/home/developer/.gitconfig:ro" \
 		-v "${HOME}/.gitconfig.local:/home/developer/.gitconfig.local:ro" \
+		-v "${HOME}/.gitconfig.work:/home/developer/.gitconfig.work:ro" \
 		-v "${HOME}/.gitignore:/home/developer/.gitignore:ro" \
 		-v "${HOME}/workspace/:/home/developer/project/" \
 		-v "/opt/projects/:/home/developer/opt/" \
