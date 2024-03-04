@@ -123,9 +123,7 @@ eclipse(){
 		-v /etc/ssh/ssh_known_hosts:/etc/ssh/ssh_known_hosts:ro \
 		-v "${HOME}/.ssh/:/home/developer/.ssh/:ro" \
 		-v "${HOME}/.gitconfig:/home/developer/.gitconfig:ro" \
-		-v "${HOME}/.gitconfig.local:/home/developer/.gitconfig.local:ro" \
-		-v "${HOME}/.gitconfig.work:/home/developer/.gitconfig.work:ro" \
-		-v "${HOME}/.gitignore:/home/developer/.gitignore:ro" \
+		-v "${HOME}/.config/git/:/home/developer/.config/git/:ro" \
 		-v "${HOME}/workspace/:/home/developer/project/" \
 		-v "/opt/projects/:/home/developer/opt/" \
 		-v "${HOME}/.eclipse/workspaces/:/home/developer/workspace/" \

@@ -6,9 +6,9 @@
 [push]
 	default = current
 [core]
-	excludesfile = ~/.gitignore
+	excludesfile = ~/.config/git/.gitignore
 [commit]
 	gpgsign = true
 
 [include]
-	path = ~/.gitconfig.local
+	path = ~/.config/git/gitconfig.local
